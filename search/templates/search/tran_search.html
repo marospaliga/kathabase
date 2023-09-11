@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags lecture_tags%}
+
+{% block body_class %}template-searchresults{% endblock %}
+
+{% block title %}Transcript Search{% endblock %}
+
+{% block content %}
+    <h1>Transcript Search</h1>
+
+    <form action="{% url 'tran_search' %}" method="get">
+        <input type="text" name="query" {% if search_query %} value="{{ search_query }}" {% endif %}>
+        <input type="submit" value="Search" class="button">
+    </form>
+
+    {% if search_results %}
+        <ul>
+            {% for result in search_results %}
+                <li>
+                    <h4><a href="{% url 'lecture_detail' result.id %}">{{ result.title }}</a></h4>
+                    {% if result.transcript %}
+                        <!-- Use the custom tag here -->
+                        <p>{{ result.transcript|truncate_around:search_query|safe }}</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if search_results.has_previous %}
+            <a href="{% url 'tran_search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% if search_results.has_next %}
+            <a href="{% url 'tran_search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
+        {% endif %}
+    {% elif search_query %}
+        <p>No results found</p>
+    {% endif %}
+{% endblock %}

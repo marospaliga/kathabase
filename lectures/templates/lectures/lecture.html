@@ -1,0 +1,15 @@
+<h1>Lecture:</h1>
+<h1>{{ lecture.title }}</h1>
+<h2>{{ lecture.filename }}</h2>
+
+<tr>
+  <td><a href="https://filedn.com/lMt9PQk3icPycy42rgdAf9b/Audio/{{ lecture.filename }}"> Listen and download</a>  this lecture </td> 
+  <br>  ________________________________ <br>
+  <b>Transcript:</b>
+  
+  {% if not lecture.transcript %} 
+    <td><a href="http://127.0.0.1:8000/admin/pages/{{ lecture.id }}/edit/">Add transcript as admin</a> </td>
+  {% else %}
+    <td>{{ lecture.transcript }}</td>
+  {% endif %}
+</tr>

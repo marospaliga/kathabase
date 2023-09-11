@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Lecture List</h1>
+
+    <form method="GET" action="{% url 'lecture_list' %}">
+        <input type="text" name="search_title" placeholder="Search by title">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for lecture in page_obj %}
+            <li>
+                <h4><a href="{% url 'lecture_detail' lecture.id %}">{{ lecture.title }}</a></h4>
+            </li>
+        {% empty %}
+            <li>No lectures found.</li>
+        {% endfor %}
+    </ul>
+
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}&search_title={{ request.GET.search_title }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&search_title={{ request.GET.search_title }}">Next</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<h1>Welcome to kathabase!</h1>
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+{% comment %} {% include 'home/welcome_page.html' %} {% endcomment %}
+<body>
+    <p>This is an application for uploading and searching through transcripts, articles and Q&A of HG Swami BV Tripurari.</p>
+    <form method="get" action="{% url 'universal_search' %}">
+        <input type="text" name="query" placeholder="Enter your search query">
+        <select name="search_type">
+            
+            <option value="transcriptions">Search in transcriptions</option>
+            <option value="articles">Search in articles</option>
+            <option value="answers">Search in Q&As</option>
+            
+        </select>
+        <input type="submit" value="Search">
+    </form>
+<br>
+<br>
+    
+    <ul>
+        <li>
+            <h4><a href="/lecture_list">View All Lectures and add transcriptions</a></h4>
+        </li>
+    </ul>
+<br>
+<br>
+    
+    
+    <ul>
+        <li>
+            <h4><a href="/question_list">View All Questions</a></h4>
+        </li>
+    </ul>
+    
+    <ul>
+        <li>
+            <h4><a href="/article_list">View All Articles</a></h4>
+        </li>
+    </ul>
+    
+  
+{% endblock content %}

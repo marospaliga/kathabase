@@ -1,0 +1,56 @@
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #666;
+}
+
+/* Add border styles */
+.container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+ul {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0;
+}
+
+li {
+    border-bottom: 1px solid #ccc;
+    padding: 3px;
+}
+
+h4 {
+    margin: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+/* Hyperlink styles */
+a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #666;
+}
+
+body {
+    font-family: 'Avenir', sans-serif;
+    color: #2f2a58;
+    background-color: #f56c2d;
+}
